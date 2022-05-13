@@ -3,7 +3,7 @@
 
 > 预览 [`glTF`](https://en.wikipedia.org/wiki/GlTF) 模型文件（支持 `.gltf` 和 `.glb` 格式），并附带模型的状态抽象及管理。
 
-效果示例：[Astronaut](https://)。
+效果示例：[Astronaut](https://solome.js.org/gltf-viewer/examples/)。
 
 ## Usage
 

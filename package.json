@@ -1,11 +1,11 @@
 {
   "name": "@juyipeng/gltf-viewer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "./lib/index.js",
   "scripts": {
     "dev": "vite",
-    "docs": "npx typedoc",
+    "docs": "npx typedoc && yarn run build",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "packages": "node ./dev-tools/build-packages.js"
