@@ -1,0 +1,1 @@
+export type { GLTFViewer, GLTFViewerConfig, GLTFViewerSize, GLTFViewerEventMap, GLTFViewerState } from '../resources/gltf-viewer'

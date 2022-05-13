@@ -1,16 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script type="module" crossorigin src="/assets/index.36230c28.js"></script>
-    <link rel="modulepreload" href="/assets/vendor.8493b24e.js">
-    <link rel="stylesheet" href="/assets/index.b3e28b31.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    
-  </body>
-</html>
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@juyipeng/gltf-viewer</title><meta name="description" content="Documentation for @juyipeng/gltf-viewer"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><link rel="stylesheet" href="assets/custom.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@juyipeng/gltf-viewer</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@juyipeng/gltf-viewer </h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><p><a href="https://www.npmjs.com/package/@juyipeng/gltf-viewer"><img src="https://img.shields.io/npm/v/@juyipeng/gltf-viewer.svg?style=flat-square&logo=npm&label=npm%20install%20@juyipeng/gltf-viewer" alt="npm version"></a></p>
+<blockquote>
+<p>预览 <a href="https://en.wikipedia.org/wiki/GlTF"><code>glTF</code></a> 模型文件（支持 <code>.gltf</code> 和 <code>.glb</code> 格式），并附带模型的状态抽象及管理。</p>
+</blockquote>
+<p>实例：<a href="https://">Astronaut</a>。</p>
+
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+
+<a href="#安装" id="安装" style="color: inherit; text-decoration: none;">
+  <h3>安装</h3>
+</a>
+<p>由于 <code>@juyipeng/gltf-viewer</code> 依赖 <a href="https://github.com/mrdoob/three.js/">THREE</a> ，需同时安装：</p>
+<pre><code class="hljs language-bash"><span class="hl-0">$ npm install @juyipeng/gltf-viewer three --save</span><br/><span class="hl-1"># or</span><br/><span class="hl-0">$ yarn add @juyipeng/gltf-viewer three</span>
+</code></pre>
+
+<a href="#基础用法" id="基础用法" style="color: inherit; text-decoration: none;">
+  <h3>基础用法</h3>
+</a>
+<pre><code class="hljs language-ts"><span class="hl-2">import</span><span class="hl-0"> { </span><span class="hl-3">GLTFViewer</span><span class="hl-0"> } </span><span class="hl-2">from</span><span class="hl-0"> </span><span class="hl-4">&#39;@juyipeng/gltf-viewer&#39;</span><br/><br/><span class="hl-1">// 创建实例</span><br/><span class="hl-5">const</span><span class="hl-0"> </span><span class="hl-6">glTFViewer</span><span class="hl-0"> = </span><span class="hl-5">new</span><span class="hl-0"> </span><span class="hl-7">GLTFViewer</span><span class="hl-0">({</span><br/><span class="hl-0">  </span><span class="hl-3">pixelRatio:</span><span class="hl-0"> </span><span class="hl-8">1</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-3">antialias:</span><span class="hl-0"> </span><span class="hl-5">true</span><span class="hl-0">,</span><br/><span class="hl-0">})</span><br/><br/><span class="hl-1">// 挂载至 DOM 节点</span><br/><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">appendTo</span><span class="hl-0">(</span><span class="hl-3">ref</span><span class="hl-0">.</span><span class="hl-3">current</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// 加载模型文件</span><br/><span class="hl-2">await</span><span class="hl-0"> </span><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">load</span><span class="hl-0">(</span><span class="hl-3">glbCDNUrl</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// 输出当前模型状态数据</span><br/><span class="hl-3">console</span><span class="hl-0">.</span><span class="hl-7">log</span><span class="hl-0">(</span><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-3">state</span><span class="hl-0">)</span><br/><span class="hl-1">// { longitude: 0, latitude: -0.3, fov: 35 }</span><br/><br/><span class="hl-1">// 设置当前模型状态：直接给状态对象赋值（立即生效）</span><br/><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-3">state</span><span class="hl-0"> = { </span><span class="hl-3">longitude:</span><span class="hl-0"> </span><span class="hl-8">0</span><span class="hl-0">, </span><span class="hl-3">latitude:</span><span class="hl-0"> -</span><span class="hl-8">0.3</span><span class="hl-0">, </span><span class="hl-3">fov:</span><span class="hl-0"> </span><span class="hl-8">35</span><span class="hl-0"> }</span><br/><br/><span class="hl-1">// 设置当前模型状态：直接给状态对象单个属性赋值（立即生效）</span><br/><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-3">state</span><span class="hl-0">.</span><span class="hl-3">fov</span><span class="hl-0"> = </span><span class="hl-8">50</span>
+</code></pre>
+
+<a href="#状态抽象" id="状态抽象" style="color: inherit; text-decoration: none;">
+  <h2>状态抽象</h2>
+</a>
+<p><code>gltf-viewer</code> 是基于 <a href="https://threejs.org/">Three.js</a> 实现的，其三维建模体系与 <a href="https://threejs.org/">Three.js</a> 完全一致，均有场景、渲染器、相机等概念。</p>
+<p>其中 <code>glTF</code> 模型的缩放、移动、旋转等交互并没有实时地修改模型在三维空间中的位置信息——我们是通过调整相机的位置信息来实现的。</p>
+<p><code>gltf-viewer</code> 中的摄像机使用 <strong>透视相机</strong>（<a href="https://threejs.org/docs/index.html?q=PerspectiveCamera#api/zh/cameras/PerspectiveCamera">PerspectiveCamera</a>）来进行投影。这一投影模式被用来模拟人眼所看到的景象，它是三维场景的渲染中使用得最普遍的投影模式。</p>
+<figure style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+  <div style="display: flex;background: white;justify-content: center;align-items: center;">
+    <div style="flex: 3">
+      <img style="width: 100%" src="https://vrlab-public.ljcdn.com/common/file/web/2ee6d4e3-081b-4933-9117-1e14bdf77617.png" /></div>
+    <div style="flex: 2"><img style="width: 100%" src="https://vrlab-public.ljcdn.com/common/file/web/2f331826-4b15-4da5-9603-50c1287b38f7.svg
+" /></div>
+  </div>
+  <figcaption>图一：透视相机和右手笛卡尔坐标系</figcaption>
+</figure>
+
+
+<a href="#longitude-amp-latitude" id="longitude-amp-latitude" style="color: inherit; text-decoration: none;">
+  <h3><code>longitude</code> &amp; <code>latitude</code></h3>
+</a>
+<p><strong>透视相机</strong> 的概念复杂、参数多，如上图一（左）所示——如果直接通过修改这些参数并不方面理解。</p>
+<p><code>gltf-viewer</code>  使用类似 <strong>经纬度</strong> 的方式描述相机位置，即相机的水平角 <code>longitude</code> 和 相机的偏航角 <code>latitude</code>，且单位为 <strong>弧度</strong>。</p>
+<p>比如，我们将整个模型场景为一个右手笛卡尔坐标系, <code>XZ</code> 平米平行于地面， <code>Y</code> 轴垂直于地面，如图一（右）。
+初始相机方向为原点看向 <strong>Z 轴负方向</strong>，可以通过调整经纬度值来影响相机信息：</p>
+<ul>
+<li>增加 <code>longitude</code>：相机向左旋转。</li>
+<li>减少 <code>longitude</code>：相机向右旋转。</li>
+<li>增加 <code>latitude</code>：相机向下旋转。</li>
+<li>减少 <code>latitude</code>：相机向上旋转。</li>
+</ul>
+
+<a href="#fov" id="fov" style="color: inherit; text-decoration: none;">
+  <h3><code>fov</code></h3>
+</a>
+<p>相机垂直方向的 <strong>可视角度</strong>，即如图一（左）中 <code>fovy</code> 值。直观的效果是增加 <code>fov</code> 值显示的模型越小，减少 <code>fov</code> 值显示的模型越大。</p>
+
+<a href="#事件监听" id="事件监听" style="color: inherit; text-decoration: none;">
+  <h2>事件监听</h2>
+</a>
+<pre><code class="hljs language-ts"><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">on</span><span class="hl-0">(</span><span class="hl-4">&#39;stateChange&#39;</span><span class="hl-0">, (</span><span class="hl-3">state</span><span class="hl-0">: </span><span class="hl-9">GLTFViewerState</span><span class="hl-0">) </span><span class="hl-5">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0"> </span><span class="hl-1">// 事件：模型状态变化</span><br/><span class="hl-0">})</span><br/><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">on</span><span class="hl-0">(</span><span class="hl-4">&#39;willLoad&#39;</span><span class="hl-0">, () </span><span class="hl-5">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0"> </span><span class="hl-1">// 即将加载</span><br/><span class="hl-0">})</span><br/><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">on</span><span class="hl-0">(</span><span class="hl-4">&#39;progressing&#39;</span><span class="hl-0">, (</span><span class="hl-3">progressing</span><span class="hl-0">: </span><span class="hl-9">number</span><span class="hl-0">) </span><span class="hl-5">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0"> </span><span class="hl-1">// 加载进度</span><br/><span class="hl-0">})</span><br/><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">on</span><span class="hl-0">(</span><span class="hl-4">&#39;loaded&#39;</span><span class="hl-0">, (</span><span class="hl-3">gltf</span><span class="hl-0">: </span><span class="hl-9">GLTF</span><span class="hl-0">) </span><span class="hl-5">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0"> </span><span class="hl-1">// 加载完成</span><br/><span class="hl-0">})</span><br/><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">on</span><span class="hl-0">(</span><span class="hl-4">&#39;loadError&#39;</span><span class="hl-0">, (</span><span class="hl-3">error</span><span class="hl-0">) </span><span class="hl-5">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0"> </span><span class="hl-1">// 加载异常</span><br/><span class="hl-0">})</span>
+</code></pre>
+
+<a href="#动画" id="动画" style="color: inherit; text-decoration: none;">
+  <h2>动画</h2>
+</a>
+<p><code>@juyipeng/gltf-viewer</code> 默认不提供动画实现，但是你可以配合 <a href="https://github.com/tweenjs/tween.js/">tween.js</a> 等第三方 <strong>动画库</strong> 通过修改 <code>state</code> 来得到你想要的动画效果，比如：</p>
+<pre><code class="hljs language-ts"><span class="hl-2">import</span><span class="hl-0"> </span><span class="hl-3">TWEEN</span><span class="hl-0"> </span><span class="hl-2">from</span><span class="hl-0"> </span><span class="hl-4">&#39;@tweenjs/tween.js&#39;</span><br/><br/><span class="hl-5">function</span><span class="hl-0"> </span><span class="hl-7">animate</span><span class="hl-0">(</span><span class="hl-3">time</span><span class="hl-0">: </span><span class="hl-9">number</span><span class="hl-0">) {</span><br/><span class="hl-0">  </span><span class="hl-7">requestAnimationFrame</span><span class="hl-0">(</span><span class="hl-3">animate</span><span class="hl-0">)</span><br/><span class="hl-0">  </span><span class="hl-6">TWEEN</span><span class="hl-0">.</span><span class="hl-7">update</span><span class="hl-0">(</span><span class="hl-3">time</span><span class="hl-0">)</span><br/><span class="hl-0">}</span><br/><br/><span class="hl-7">requestAnimationFrame</span><span class="hl-0">(</span><span class="hl-3">animate</span><span class="hl-0">)</span><br/><br/><span class="hl-5">const</span><span class="hl-0"> </span><span class="hl-6">tween</span><span class="hl-0"> = </span><span class="hl-5">new</span><span class="hl-0"> </span><span class="hl-6">TWEEN</span><span class="hl-0">.</span><span class="hl-7">Tween</span><span class="hl-0">({ </span><span class="hl-3">fov:</span><span class="hl-0"> </span><span class="hl-8">35</span><span class="hl-0">, </span><span class="hl-3">longitude:</span><span class="hl-0"> </span><span class="hl-8">0</span><span class="hl-0">, </span><span class="hl-3">latitude:</span><span class="hl-0"> -</span><span class="hl-8">0.3</span><span class="hl-0"> })</span><br/><span class="hl-0">  .</span><span class="hl-7">to</span><span class="hl-0">({</span><span class="hl-3">fov:</span><span class="hl-0"> </span><span class="hl-8">60</span><span class="hl-0">, </span><span class="hl-3">latitude:</span><span class="hl-0"> -</span><span class="hl-8">1.1496852156837822</span><span class="hl-0">, </span><span class="hl-3">longitude:</span><span class="hl-0"> </span><span class="hl-8">2.4468501085409855</span><span class="hl-0"> }, </span><span class="hl-8">2000</span><span class="hl-0"> )</span><br/><span class="hl-0">  .</span><span class="hl-7">easing</span><span class="hl-0">(</span><span class="hl-6">TWEEN</span><span class="hl-0">.</span><span class="hl-3">Easing</span><span class="hl-0">.</span><span class="hl-3">Quadratic</span><span class="hl-0">.</span><span class="hl-3">Out</span><span class="hl-0">)</span><br/><span class="hl-0">  .</span><span class="hl-7">onUpdate</span><span class="hl-0">((</span><span class="hl-3">newState</span><span class="hl-0">) </span><span class="hl-5">=&gt;</span><span class="hl-0"> </span><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-3">state</span><span class="hl-0"> = </span><span class="hl-3">newState</span><span class="hl-0">)</span><br/><span class="hl-0">  .</span><span class="hl-7">start</span><span class="hl-0">()</span>
+</code></pre>
+
+<a href="#光照配置" id="光照配置" style="color: inherit; text-decoration: none;">
+  <h2>光照配置</h2>
+</a>
+<pre><code class="hljs language-ts"><span class="hl-3">pointLight</span><span class="hl-0">?: </span><span class="hl-6">THREE</span><span class="hl-0">.</span><span class="hl-3">PointLight</span><span class="hl-0"> | </span><span class="hl-5">false</span><span class="hl-0"> </span><span class="hl-1">// 点光源</span><br/><span class="hl-3">directionalLight</span><span class="hl-0">?: </span><span class="hl-6">THREE</span><span class="hl-0">.</span><span class="hl-3">DirectionalLight</span><span class="hl-0"> | </span><span class="hl-5">false</span><span class="hl-0"> </span><span class="hl-1">// 平行光</span><br/><span class="hl-3">ambientLight</span><span class="hl-0">?: </span><span class="hl-6">THREE</span><span class="hl-0">.</span><span class="hl-3">AmbientLight</span><span class="hl-0"> | </span><span class="hl-5">false</span><span class="hl-0"> </span><span class="hl-1">// 环境光</span><br/><span class="hl-1">// 色调映射：模拟、逼近高动态范围（HDR）效果</span><br/><span class="hl-3">toneMapping</span><span class="hl-0">?: {</span><br/><span class="hl-0">  toneMapping?</span><span class="hl-3">:</span><span class="hl-0"> </span><span class="hl-6">THREE</span><span class="hl-0">.</span><span class="hl-3">ToneMapping</span><br/><span class="hl-0">  </span><span class="hl-3">toneMappingExposure</span><span class="hl-0">?: </span><span class="hl-3">number</span><br/><span class="hl-0">}</span>
+</code></pre>
+
+<a href="#更多自定义" id="更多自定义" style="color: inherit; text-decoration: none;">
+  <h2>更多自定义</h2>
+</a>
+<p>你可以监听模型加载完 loaded 事件，回调函数会提供 scene、renderer 实例，可以进行更多自定义设置：</p>
+<pre><code class="hljs language-ts"><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">once</span><span class="hl-0">(</span><span class="hl-4">&#39;loaded&#39;</span><span class="hl-0">, (</span><span class="hl-3">gltf</span><span class="hl-0">, </span><span class="hl-3">scene</span><span class="hl-0">, </span><span class="hl-3">renderer</span><span class="hl-0">) </span><span class="hl-5">=&gt;</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-1">// 获取 renderer 实例，进行相关配置</span><br/><span class="hl-0">  </span><span class="hl-3">renderer</span><span class="hl-0">.</span><span class="hl-3">localClippingEnabled</span><span class="hl-0"> = </span><span class="hl-5">true</span><br/><span class="hl-0">  </span><span class="hl-1">// 刷新：重新渲染</span><br/><span class="hl-0">  </span><span class="hl-3">glTFViewer</span><span class="hl-0">.</span><span class="hl-7">refresh</span><span class="hl-0">()</span><br/><span class="hl-0">})</span>
+</code></pre>
+
+<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+  <h2>API</h2>
+</a>
+<blockquote>
+<p><a href="https://solome.js.org/gltf-viewer">solome.js.org/gltf-viewer</a>。</p>
+</blockquote>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/GLTFViewer.html" class="tsd-kind-icon">GLTFViewer</a></li><li class="tsd-kind-interface"><a href="interfaces/GLTFViewerConfig.html" class="tsd-kind-icon">GLTFViewer<wbr/>Config</a></li><li class="tsd-kind-interface"><a href="interfaces/GLTFViewerSize.html" class="tsd-kind-icon">GLTFViewer<wbr/>Size</a></li><li class="tsd-kind-interface"><a href="interfaces/GLTFViewerState.html" class="tsd-kind-icon">GLTFViewer<wbr/>State</a></li><li class="tsd-kind-type-alias"><a href="modules.html#GLTFViewerEventMap" class="tsd-kind-icon">GLTFViewer<wbr/>Event<wbr/>Map</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li><li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
