@@ -58,8 +58,7 @@ glTFViewer.state.fov = 50
   <div style="display: flex;background: white;justify-content: center;align-items: center;">
     <div style="flex: 3">
       <img style="width: 100%" src="https://vrlab-public.ljcdn.com/common/file/web/2ee6d4e3-081b-4933-9117-1e14bdf77617.png" /></div>
-    <div style="flex: 2"><img style="width: 100%" src="https://vrlab-public.ljcdn.com/common/file/web/2f331826-4b15-4da5-9603-50c1287b38f7.svg
-" /></div>
+    <div style="flex: 2"><img style="width: 100%" src="https://vrlab-public.ljcdn.com/common/file/web/2f331826-4b15-4da5-9603-50c1287b38f7.svg" /></div>
   </div>
   <figcaption>图一：透视相机和右手笛卡尔坐标系</figcaption>
 </figure>
